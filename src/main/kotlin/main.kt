@@ -9,7 +9,7 @@ fun main() {
     val argv = process.argv
     val args = argv.slice(2 until argv.size)
 
-    if (!argsValid(args)) {
+    if (!ArgsParser.isValid(args)) {
         console.log("Usage: ${USAGE.trimIndent()}")
         process.exit(INVALID_ARGUMENT)
     }
