@@ -18,6 +18,9 @@ dependencies {
 kotlin {
     js(LEGACY) {
         binaries.executable()
+
+        // https://www.kotlincn.net/docs/reference/js-modules.html
+        useCommonJs()
         nodejs {
 
         }
