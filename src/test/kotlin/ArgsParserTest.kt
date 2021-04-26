@@ -19,6 +19,7 @@ class ArgsParserTest {
         assertFalse { argsValid(listOf()) }
         assertFalse { argsValid(listOf(TA, TB)) }
         assertFalse { argsValid(listOf(TA, SEPARATOR, TB, TC)) }
+        assertFalse { argsValid(listOf(TA, SEPARATOR, SEPARATOR, TB)) }
 
         assertTrue { argsValid(listOf(TA, SEPARATOR, TB)) }
         assertTrue { argsValid(listOf(TA, TB, SEPARATOR, TC)) }

@@ -18,5 +18,6 @@ fun argsValid(args: List<String>): Boolean {
     assert(args.all { it.isNotBlank() }, AssertionError("Some of args are blank! "))
 
     val argsSize = args.size
+    // If array contains 1+ SEPARATOR, indexOf will get the first.
     return !(argsSize < 3 || args.indexOf(SEPARATOR) != argsSize - 2)
 }
