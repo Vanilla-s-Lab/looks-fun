@@ -1,5 +1,3 @@
-package parser
-
 import assert.assert
 
 // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?

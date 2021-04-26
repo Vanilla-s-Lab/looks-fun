@@ -1,5 +1,3 @@
-import parser.argsValid
-
 private const val USAGE =
     """lkf <TypeA> (1+) - <TypeC>, 
 Example: lkf int - long, lkf long double - String. """
