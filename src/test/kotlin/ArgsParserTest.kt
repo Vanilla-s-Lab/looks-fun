@@ -6,11 +6,13 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-private const val TA = "TypeA"
-private const val TB = "TypeB"
-private const val TC = "TypeC"
-
 class ArgsParserTest {
+    companion object {
+        private const val TA = "TypeA"
+        private const val TB = "TypeB"
+        private const val TC = "TypeC"
+    }
+
     @Test
     fun testArgsValid() {
         // Actually, it fails with AssertionError, but seems it only can get Error.

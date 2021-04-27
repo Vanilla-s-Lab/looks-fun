@@ -13,8 +13,8 @@ object ArgsParser {
      * @return true if meet our requirement.
      */
     fun isValid(args: List<String>): Boolean {
-        assert(args.all { !it.contains(WHITE_SPACE) }, AssertionError("Some of args contains \" \"! "))
-        assert(args.all { it.isNotBlank() }, AssertionError("Some of args are blank! "))
+        assert(args.all { !it.contains(WHITE_SPACE) }, AssertionError())
+        assert(args.all { it.isNotBlank() }, AssertionError())
 
         val argsSize = args.size
         // If array contains 1+ SEPARATOR, indexOf will get the first.
