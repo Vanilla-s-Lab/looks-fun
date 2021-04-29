@@ -1,3 +1,4 @@
+import ArgsParser.NO_ARGS
 import ArgsParser.SEPARATOR
 import ArgsParser.WHITE_SPACE
 import ArgsParser.isValid
@@ -23,6 +24,9 @@ class ArgsParserTest {
         assertFalse { isValid(listOf(TA, TB)) }
         assertFalse { isValid(listOf(TA, SEPARATOR, TB, TC)) }
         assertFalse { isValid(listOf(TA, SEPARATOR, SEPARATOR, TB)) }
+
+        assertFalse { isValid(listOf(NO_ARGS, NO_ARGS, TB)) }
+        assertTrue { isValid(listOf(NO_ARGS, SEPARATOR, TB)) }
 
         assertTrue { isValid(listOf(TA, SEPARATOR, TB)) }
         assertTrue { isValid(listOf(TA, TB, SEPARATOR, TC)) }
