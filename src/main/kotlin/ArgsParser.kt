@@ -2,7 +2,7 @@ import assert.assert
 
 object ArgsParser {
     // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?
-    const val SEPARATOR = '-'.toString()
+    const val SEPARATOR = "->"
     const val WHITE_SPACE = ' '.toString()
 
     /**
