@@ -1,6 +1,7 @@
-package parser
+package parser.operator
 
 import ParseResult
+import parser.FIParser
 
 object UnaryOperatorParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
