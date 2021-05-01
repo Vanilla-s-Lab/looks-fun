@@ -1,4 +1,9 @@
 import ArgsParser.SEPARATOR
+import assert.assert
+import assert.assert.AssertionError
+
+typealias RawArgs = Pair<List<String>, String>
+typealias ParseResult = Pair<String, List<String>>
 
 private const val USAGE =
     """lkf - Looking for Standard Java Functional Interface. 
@@ -16,4 +21,36 @@ fun main() {
         console.log(USAGE.trimIndent())
         process.exit(INVALID_ARGUMENT)
     }
+}
+
+/**
+ * Parse user input to get args list & return type.
+ * Should be called after check user input.
+ *
+ * @return RawArgs for further analysis.
+ */
+private fun List<String>.toRaw(): RawArgs {
+    val separatorIndex = this.indexOf(SEPARATOR)
+    val returnType = this.last()
+    return this.subList(0, separatorIndex) to returnType
+}
+
+/**
+ * After further analysis, most precisely class will be chosen.
+ * This method will return the result in string, like "UnaryOperator<String>".
+ *
+ * @return a printable string of parse result.
+ */
+private fun ParseResult.string(): String {
+    val (name, args) = this
+    assert(name.isNotBlank(), AssertionError())
+    assert(args.isNotEmpty(), AssertionError())
+
+    val stringBuilder = StringBuilder(name)
+
+    stringBuilder.append("<")
+    stringBuilder.append(args.joinToString(separator = ", "))
+    stringBuilder.append(">")
+
+    return stringBuilder.toString()
 }
