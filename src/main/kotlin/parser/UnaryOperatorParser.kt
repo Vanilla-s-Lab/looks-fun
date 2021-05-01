@@ -4,7 +4,8 @@ import ParseResult
 
 object UnaryOperatorParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
-        return argsList.size == 1 && argsList[0] == returnType
+        return (argsList.size == 1 &&
+                argsList[0] == returnType)
     }
 
     override fun internalParse(argsList: List<String>, returnType: String): ParseResult {
