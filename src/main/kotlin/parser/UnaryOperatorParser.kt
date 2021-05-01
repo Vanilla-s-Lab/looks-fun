@@ -9,8 +9,8 @@ object UnaryOperatorParser : FIParser() {
     }
 
     override fun internalParse(argsList: List<String>, returnType: String): ParseResult {
-        val (arg) = argsList
-        val resultName = if (arg in stdTypeList) arg.capitalize() + commonName() else arg
-        return resultName to listOf(returnType)
+        val arg = argsList[0]
+        if (arg in stdTypeList) return "${arg.capitalize()}${commonName()}" to emptyList()
+        return commonName() to argsList
     }
 }

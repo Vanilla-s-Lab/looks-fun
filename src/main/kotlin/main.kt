@@ -46,6 +46,10 @@ private fun ParseResult.string(): String {
     assert(name.isNotBlank(), AssertionError())
     assert(args.isNotEmpty(), AssertionError())
 
+    // Some of Functional Interfaces does not have any generic args.
+    // @see https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
+    if (args.isEmpty()) return name
+
     val stringBuilder = StringBuilder(name)
 
     stringBuilder.append("<")
