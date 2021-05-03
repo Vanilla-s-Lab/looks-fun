@@ -21,6 +21,9 @@ fun main() {
         console.log(USAGE.trimIndent())
         process.exit(INVALID_ARGUMENT)
     }
+
+    val parseResult = ArgsParser.parseArgs(args.toRaw())
+    println(parseResult.string())
 }
 
 /**
