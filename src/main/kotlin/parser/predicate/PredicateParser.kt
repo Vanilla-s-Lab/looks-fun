@@ -12,6 +12,6 @@ object PredicateParser : FIParser() {
     override fun internalParse(argsList: List<String>, returnType: String): ParseResult {
         val arg = argsList[0]
         if (arg in fiStdTypeList) return "${arg.capitalize()}${commonName()}" to emptyList()
-        return commonName() to argsList
+        return commonName() to argsList.map { it.filterStdType() }
     }
 }

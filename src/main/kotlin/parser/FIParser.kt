@@ -27,6 +27,12 @@ abstract class FIParser {
         return internalParse(argsList, returnType)
     }
 
+    /**
+     * Cast Java standard type name to wrapped Type name.
+     * Will be using in generic args when returning parse result.
+     *
+     * @return wrapped class name if it is basic type, otherwise return to itself.
+     */
     protected fun String.filterStdType(): String {
         assert(this.isNotEmpty() && this.isNotEmpty(), AssertionError())
 
