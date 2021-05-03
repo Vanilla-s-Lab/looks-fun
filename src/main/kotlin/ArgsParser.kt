@@ -1,12 +1,26 @@
 import assert.assert
+import parser.SupplierParser
+import parser.consumer.BiConsumerParser
+import parser.consumer.ConsumerParser
+import parser.function.BiFunctionParser
+import parser.function.FunctionParser
 import parser.operator.BinaryOperatorParser
 import parser.operator.UnaryOperatorParser
+import parser.predicate.BiPredicateParser
+import parser.predicate.PredicateParser
 
 object ArgsParser {
     // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?
     const val SEPARATOR = "->"
     const val WHITE_SPACE = ' '.toString()
     const val NO_ARGS = "()"
+
+    private val allFIParser = listOf(
+        UnaryOperatorParser, BinaryOperatorParser,
+        PredicateParser, BiPredicateParser,
+        FunctionParser, BiFunctionParser, SupplierParser,
+        ConsumerParser, BiConsumerParser
+    )
 
     /**
      * Check the arguments array, we needed format is [n x "TypeA", SEPARATOR, "TypeB"].
@@ -31,5 +45,16 @@ object ArgsParser {
         }
 
         return true
+    }
+
+    fun parseArgs(rawArgs: RawArgs): ParseResult {
+        val (argsList, returnType) = rawArgs
+        allFIParser.forEach {
+            if (it.check(argsList, returnType))
+                return it.parse(argsList, returnType)
+        }
+
+        println("No standard functional interface matching. ")
+        process.exit(INVALID_ARGUMENT); throw AssertionError()
     }
 }
