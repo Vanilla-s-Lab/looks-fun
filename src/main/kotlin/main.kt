@@ -12,10 +12,12 @@ No Args or Return value: "() $SEPARATOR String", "Object $SEPARATOR void". """
 
 // https://nodejs.org/api/process.html#process_exit_codes
 const val INVALID_ARGUMENT = 9
+const val DEBUG = false // Debug flag to hook args.
 
 fun main() {
     val argv = process.argv
-    val args = argv.slice(2 until argv.size)
+    var args = argv.slice(2 until argv.size)
+    if (DEBUG) args = listOf("int", SEPARATOR, "int")
 
     if (!ArgsParser.isValid(args)) {
         console.log(USAGE.trimIndent())
