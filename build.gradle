@@ -16,7 +16,7 @@ dependencies {
 }
 
 kotlin {
-    js(LEGACY) {
+    js(IR) { // https://discuss.kotlinlang.org/t/kotlin-js-1-4-how-to-output-a-npm-package/19128
         binaries.executable()
 
         // https://www.kotlincn.net/docs/reference/js-modules.html
