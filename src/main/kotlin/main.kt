@@ -23,7 +23,7 @@ fun main() {
     }
 
     val parseResult = ArgsParser.parseArgs(args.toRaw())
-    println(parseResult.string())
+    console.log(parseResult.string())
 }
 
 /**
@@ -45,9 +45,8 @@ private fun List<String>.toRaw(): RawArgs {
  * @return a printable string of parse result.
  */
 private fun ParseResult.string(): String {
-    val (name, args) = this
+    val (name, args) = this // Function name cannot be blank, but args can.
     assert(name.isNotBlank(), AssertionError())
-    assert(args.isNotEmpty(), AssertionError())
 
     // Some of Functional Interfaces does not have any generic args.
     // @see https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
