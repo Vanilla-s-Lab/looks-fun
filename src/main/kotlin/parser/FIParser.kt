@@ -6,12 +6,15 @@ import assert.assert.AssertionError
 
 abstract class FIParser {
     companion object {
-        val stdTypeList = listOf(Int, Long, Double)
-            .map { it::class.simpleName!!.toLowerCase() }
+        private fun Any.lowerClassName() = this::class.simpleName!!.toLowerCase()
+
+        val fiStdTypeList = listOf(Int, Long, Double).map { it.lowerClassName() }
+
+        // https://www.w3schools.com/java/java_wrapper_classes.asp
+        val stdTypeList = listOf(Byte, Short, Int, Long, Float, Double, Boolean, Char)
+            .map { it.lowerClassName() }
 
         private const val COMMON_SUFFIX = "Parser"
-        private const val INTEGER = "Integer"
-
         val BOOLEAN = Boolean::class.simpleName!!.toLowerCase()
     }
 
@@ -24,12 +27,13 @@ abstract class FIParser {
         return internalParse(argsList, returnType)
     }
 
-    protected fun String.toWrapperName(): String {
+    protected fun String.filterStdType(): String {
         assert(this.isNotEmpty() && this.isNotEmpty(), AssertionError())
 
-        if (this in stdTypeList)
-            return if (this == Int::class.simpleName) INTEGER
-            else this.capitalize()
+        if (this in stdTypeList) {
+            if (this == Int.lowerClassName()) return "Integer"
+            if (this == Char.lowerClassName()) return "Character"
+        }
 
         return this
     }

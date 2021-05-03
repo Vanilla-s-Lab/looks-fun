@@ -12,7 +12,7 @@ object BinaryOperatorParser : FIParser() {
 
     override fun internalParse(argsList: List<String>, returnType: String): ParseResult {
         val arg = argsList[0]
-        if (arg in stdTypeList) return "${arg.capitalize()}${commonName()}" to emptyList()
+        if (arg in fiStdTypeList) return "${arg.capitalize()}${commonName()}" to emptyList()
         return commonName() to argsList.distinct()
     }
 }

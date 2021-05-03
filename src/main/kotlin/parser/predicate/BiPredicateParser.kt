@@ -10,6 +10,6 @@ object BiPredicateParser : FIParser() {
     }
 
     override fun internalParse(argsList: List<String>, returnType: String): ParseResult {
-        return commonName() to argsList.map { it.toWrapperName() }
+        return commonName() to argsList.map { it.filterStdType() }
     }
 }
