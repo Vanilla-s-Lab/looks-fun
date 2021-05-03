@@ -6,7 +6,8 @@ import assert.assert.AssertionError
 
 abstract class FIParser {
     companion object {
-        private fun Any.lowerClassName() = this::class.simpleName!!.toLowerCase()
+        private fun Any.lowerClassName() = this::class.simpleName!!
+            .removeSuffix("CompanionObject").toLowerCase()
 
         val fiStdTypeList = listOf(Int, Long, Double).map { it.lowerClassName() }
 
@@ -14,6 +15,7 @@ abstract class FIParser {
         val stdTypeList = listOf(Byte, Short, Int, Long, Float, Double, Boolean, Char)
             .map { it.lowerClassName() }
 
+        const val VOID = "void"
         private const val COMMON_SUFFIX = "Parser"
         val BOOLEAN = Boolean::class.simpleName!!.toLowerCase()
     }
@@ -39,6 +41,7 @@ abstract class FIParser {
         if (this in stdTypeList) {
             if (this == Int.lowerClassName()) return "Integer"
             if (this == Char.lowerClassName()) return "Character"
+            return this.capitalize()
         }
 
         return this
