@@ -1,5 +1,8 @@
 plugins {
     id 'org.jetbrains.kotlin.js' version '1.4.32'
+
+    // https://github.com/gciatto/kt-npm-publish
+    id 'io.github.gciatto.kt-npm-publish' version '0.3.6'
 }
 
 group = 'org.hydev'
@@ -25,4 +28,12 @@ kotlin {
 
         }
     }
+}
+
+npmPublishing {
+    // https://stackoverflow.com/questions/37101589/how-to-read-a-properties-files-and-use-the-values-in-project-gradle-script
+    def props = new Properties()
+    file("token.properties").withInputStream { props.load(it) }
+
+    token.set(props.getProperty("npmToken"))
 }
