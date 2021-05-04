@@ -9,11 +9,14 @@ abstract class FIParser {
         private fun Any.lowerClassName() = this::class.simpleName!!
             .removeSuffix("CompanionObject").toLowerCase()
 
-        val fiStdTypeList = listOf(Int, Long, Double).map { it.lowerClassName() }
+        val fiStdTypeList = listOf(Int, Double)
+            .map { it.lowerClassName() }
+            .toMutableList().apply { add("long") }
 
         // https://www.w3schools.com/java/java_wrapper_classes.asp
-        val stdTypeList = listOf(Byte, Short, Int, Long, Float, Double, Boolean, Char)
-            .map { it.lowerClassName() }
+        // Long is a special case, its class.simpleName is just "Long".
+        val stdTypeList = listOf(Byte, Short, Int, Float, Double, Boolean, Char)
+            .map { it.lowerClassName() }.toMutableList().apply { add("long") }
 
         const val VOID = "void"
         private const val COMMON_SUFFIX = "Parser"
