@@ -24,8 +24,13 @@ kotlin {
 
         // https://www.kotlincn.net/docs/reference/js-modules.html
         useCommonJs()
-        nodejs {
 
+        // http://www.kotlincn.net/docs/reference/js-project-setup.html#packagejson-customization
+        nodejs {
+            compilations["main"].packageJson {
+                // https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bin
+                customField("bin", mapOf("lkf" to "./kotlin/looks-fun.js"))
+            }
         }
     }
 }
@@ -33,4 +38,13 @@ kotlin {
 npmPublishing {
     val npmToken = properties["npmToken"] ?: ""
     token.set(npmToken as String)
+
+    // https://github.com/gciatto/kt-npm-publish
+    liftJsSources { file, i, line ->
+        // https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bin
+        if (file.name == "looks-fun.js" && i == 0)
+            @Suppress("ConvertToStringTemplate")
+            "#!/usr/bin/env node" + "\n\n" + line
+        else line
+    }
 }
