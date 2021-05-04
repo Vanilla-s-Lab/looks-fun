@@ -54,7 +54,7 @@ object ArgsParser {
                 return it.parse(argsList, returnType)
         }
 
-        println("No standard functional interface matching. ")
+        console.log("No standard functional interface matching. ")
         process.exit(INVALID_ARGUMENT); throw AssertionError()
     }
 }
