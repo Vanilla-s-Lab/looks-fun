@@ -42,6 +42,3 @@ gradle-app.setting
 
 # By Vanilla, IntelliJ IDEA.
 .idea/
-
-# npm.js publish token file.
-token.properties
