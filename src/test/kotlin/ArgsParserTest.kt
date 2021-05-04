@@ -15,7 +15,7 @@ class ArgsParserTest {
     }
 
     @Test
-    fun testArgsValid() {
+    internal fun testArgsValid() {
         // Actually, it fails with AssertionError, but seems it only can get Error.
         assertFailsWith<AssertionError> { isValid(listOf(WHITE_SPACE, SEPARATOR, WHITE_SPACE)) }
         assertFailsWith<AssertionError> { isValid(listOf("", SEPARATOR, "")) }

@@ -34,7 +34,7 @@ fun main() {
  *
  * @return RawArgs for further analysis.
  */
-private fun List<String>.toRaw(): RawArgs {
+internal fun List<String>.toRaw(): RawArgs {
     val separatorIndex = this.indexOf(SEPARATOR)
     val returnType = this.last()
     return this.subList(0, separatorIndex) to returnType
@@ -46,7 +46,7 @@ private fun List<String>.toRaw(): RawArgs {
  *
  * @return a printable string of parse result.
  */
-private fun ParseResult.string(): String {
+internal fun ParseResult.string(): String {
     val (name, args) = this // Function name cannot be blank, but args can.
     assert(name.isNotBlank(), AssertionError())
 
