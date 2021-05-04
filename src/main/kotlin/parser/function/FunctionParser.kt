@@ -5,7 +5,8 @@ import parser.FIParser
 
 object FunctionParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
-        return (argsList.size == 1 &&
+        return (returnType != VOID &&
+                argsList.size == 1 &&
                 argsList[0] != returnType)
     }
 

@@ -14,7 +14,7 @@ object BiConsumerParser : FIParser() {
         val probeStdTypeIndex = argsList.indexOfFirst { it in stdTypeList }
         if (probeStdTypeIndex != -1) { // Found at least one type is std.
             val anotherIndex = abs((argsList.size - 1) - probeStdTypeIndex)
-            return "Obj${argsList.get(probeStdTypeIndex)}${commonName()}" to
+            return "Obj${argsList[probeStdTypeIndex].capitalize()}${commonName()}" to
                     listOf(argsList[anotherIndex]).map { it.filterStdType() }
         }
         return commonName() to argsList.map { it.filterStdType() }

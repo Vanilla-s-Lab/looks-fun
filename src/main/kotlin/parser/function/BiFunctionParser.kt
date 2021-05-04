@@ -6,7 +6,8 @@ import parser.FIParser
 object BiFunctionParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         val allArgs = argsList.toMutableList().apply { add(returnType) }
-        return (argsList.size == 2 && // Has 2 args, and all args not equal at the same time.
+        return (returnType != VOID &&
+                argsList.size == 2 && // Has 2 args, and all args not equal at the same time.
                 allArgs.toSet().size != 1) // Because If that's the case, use BinaryOperator instead.
     }
 
