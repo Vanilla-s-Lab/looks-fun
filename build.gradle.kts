@@ -40,11 +40,13 @@ npmPublishing {
     token.set(npmToken as String)
 
     // https://github.com/gciatto/kt-npm-publish
-    liftJsSources { file, i, line ->
+    liftPackageJson { // Hook in liftJsSources is too early, .js will be overwrite.
+        val pjName = project.name
+        val mainJs = file("${buildDir.path}/js/packages/$pjName/kotlin/${pjName}.js")
+        val bakByteArray = mainJs.readBytes()
+
         // https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bin
-        if (file.name == "looks-fun.js" && i == 0)
-            @Suppress("ConvertToStringTemplate")
-            "#!/usr/bin/env node" + "\n\n" + line
-        else line
+        val shebang = "#!/usr/bin/env node" + "\n\n"
+        mainJs.writeBytes(shebang.toByteArray() + bakByteArray)
     }
 }
