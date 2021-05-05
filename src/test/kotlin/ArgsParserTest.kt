@@ -1,5 +1,6 @@
 import ArgsParser.NO_ARGS
 import ArgsParser.SEPARATOR
+import ArgsParser.WHITE_SPACE
 import ArgsParser.isValid
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
@@ -12,7 +13,7 @@ class ArgsParserTest {
         private const val TB = "TypeB"
         private const val TC = "TypeC"
 
-        private const val WS = ""
+        private const val WS = WHITE_SPACE
     }
 
     @Test

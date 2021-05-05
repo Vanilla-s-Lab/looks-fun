@@ -12,7 +12,7 @@ import parser.predicate.PredicateParser
 object ArgsParser {
     // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?
     internal const val SEPARATOR = "-"
-    private const val WHITE_SPACE = ' '.toString()
+    internal const val WHITE_SPACE = ' '.toString()
     internal const val NO_ARGS = "[]"
 
     private val allFIParser = listOf(
