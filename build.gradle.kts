@@ -1,3 +1,6 @@
+import io.github.gciatto.kt.node.Bugs
+import io.github.gciatto.kt.node.People
+
 plugins {
     kotlin("js") version "1.4.32"
 
@@ -6,7 +9,7 @@ plugins {
 }
 
 group = "org.hydev"
-version = "0.7.0-alpha" // https://semver.org/lang/zh-CN/
+version = "0.7.0" // https://semver.org/lang/zh-CN/
 
 repositories {
     jcenter()
@@ -35,6 +38,9 @@ kotlin {
     }
 }
 
+val github = "https://github.com/Vanilla-s-Lab/looks-fun"
+val (myName, myEmail) = "Vanilla" to "neko@hydev.org"
+val myGithub = "https://github.com/VergeDX"
 npmPublishing {
     val npmToken = properties["npmToken"] ?: ""
     token.set(npmToken as String)
@@ -48,5 +54,13 @@ npmPublishing {
         // https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bin
         val shebang = "#!/usr/bin/env node" + "\n\n"
         mainJs.writeBytes(shebang.toByteArray() + bakByteArray)
+
+        // https://docs.npmjs.com/cli/v7/configuring-npm/package-json
+        description = "A CLI tool to lookup 43 kinds of Java Standard Functional Interface."
+        keywords = listOf("Java", "Kotlin").toMutableList()
+        homepage = github
+        bugs = Bugs("$github/issues", myEmail)
+        license = "MIT"
+        people = listOf(People(myName, myEmail, myGithub)).toMutableList()
     }
 }
