@@ -48,7 +48,9 @@ object ArgsParser {
     }
 
     fun parseArgs(rawArgs: RawArgs): ParseResult {
-        val (argsList, returnType) = rawArgs
+        var (argsList, returnType) = rawArgs
+        if (argsList[0] == NO_ARGS) argsList = emptyList()
+
         allFIParser.forEach {
             if (it.check(argsList, returnType))
                 return it.parse(argsList, returnType)
