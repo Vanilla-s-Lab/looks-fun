@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.hydev"
-version = "1.0-SNAPSHOT"
+version = "0.7.0-alpha" // https://semver.org/lang/zh-CN/
 
 repositories {
     jcenter()
