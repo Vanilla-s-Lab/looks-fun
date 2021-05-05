@@ -4,7 +4,7 @@ import ParseResult
 import parser.FIParser
 import kotlin.math.abs
 
-object BiConsumerParser : FIParser() {
+internal object BiConsumerParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         return (argsList.size == 2 &&
                 returnType == VOID)

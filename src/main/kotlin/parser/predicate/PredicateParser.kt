@@ -3,7 +3,7 @@ package parser.predicate
 import ParseResult
 import parser.FIParser
 
-object PredicateParser : FIParser() {
+internal object PredicateParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         return (argsList.size == 1 &&
                 returnType == BOOLEAN)

@@ -3,7 +3,7 @@ package parser.function
 import ParseResult
 import parser.FIParser
 
-object FunctionParser : FIParser() {
+internal object FunctionParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         return (returnType != VOID &&
                 argsList.size == 1 &&

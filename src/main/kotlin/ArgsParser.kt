@@ -9,7 +9,7 @@ import parser.operator.UnaryOperatorParser
 import parser.predicate.BiPredicateParser
 import parser.predicate.PredicateParser
 
-object ArgsParser {
+internal object ArgsParser {
     // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?
     internal const val SEPARATOR = "-"
     internal const val WHITE_SPACE = ' '.toString()

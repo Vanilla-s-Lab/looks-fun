@@ -7,7 +7,7 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class ArgsParserTest {
+internal class ArgsParserTest {
     companion object {
         private const val TA = "TypeA"
         private const val TB = "TypeB"

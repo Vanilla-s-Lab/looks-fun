@@ -2,7 +2,7 @@ package parser
 
 import ParseResult
 
-object SupplierParser : FIParser() {
+internal object SupplierParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         return argsList.isEmpty()
     }

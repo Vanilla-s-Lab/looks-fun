@@ -14,7 +14,7 @@ No Args or Return value: "[] $SEPARATOR String", "Object $SEPARATOR void". """
 internal const val INVALID_ARGUMENT = 9
 private const val DEBUG = false // Debug flag to hook args.
 
-fun main() {
+internal fun main() {
     val argv = process.argv
     var args = argv.slice(2 until argv.size)
     if (DEBUG) args = listOf("[]", "-", "double")

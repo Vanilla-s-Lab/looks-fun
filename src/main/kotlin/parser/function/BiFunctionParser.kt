@@ -3,7 +3,7 @@ package parser.function
 import ParseResult
 import parser.FIParser
 
-object BiFunctionParser : FIParser() {
+internal object BiFunctionParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         val allArgs = argsList.toMutableList().apply { add(returnType) }
         return (returnType != VOID &&

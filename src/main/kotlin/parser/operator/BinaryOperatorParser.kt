@@ -3,7 +3,7 @@ package parser.operator
 import ParseResult
 import parser.FIParser
 
-object BinaryOperatorParser : FIParser() {
+internal object BinaryOperatorParser : FIParser() {
     override fun check(argsList: List<String>, returnType: String): Boolean {
         return (argsList.size == 2 &&
                 argsList.distinct().size == 1 &&

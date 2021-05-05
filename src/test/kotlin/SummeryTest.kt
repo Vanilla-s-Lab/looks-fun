@@ -3,7 +3,7 @@ import ArgsParser.SEPARATOR
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-class SummeryTest {
+internal class SummeryTest {
     private fun fullTest(vararg args: String): String {
         assertTrue(args.all { it.isNotEmpty() })
         assertTrue(args.all { it.isNotBlank() })
