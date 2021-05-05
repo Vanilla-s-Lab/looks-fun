@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.hydev"
-version = "0.7.1" // https://semver.org/lang/zh-CN/
+version = "0.7.2" // https://semver.org/lang/zh-CN/
 
 repositories {
     jcenter()
