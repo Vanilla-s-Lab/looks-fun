@@ -4,6 +4,11 @@ import ParseResult
 import assert.assert
 import assert.assert.AssertionError
 
+/**
+ * Each subclass represents a type of standard interface.
+ * Override unless Java released new standard functional interface.
+ *
+ */
 abstract class FIParser {
     internal companion object {
         private fun Any.lowerClassName() = this::class.simpleName!!
@@ -23,8 +28,21 @@ abstract class FIParser {
         protected val BOOLEAN = Boolean::class.simpleName!!.toLowerCase()
     }
 
+    /**
+     * A "common name" of this functional interface, such as "Consumer" for "IntConsumer".
+     * Default behavior assume subclass named as "${commonName}Parser".
+     */
     protected fun commonName(): String = this::class.simpleName!!.substringBefore(COMMON_SUFFIX)
+
+    /**
+     * For each type of functional interface, check the input can be parse to.
+     */
     internal abstract fun check(argsList: List<String>, returnType: String): Boolean
+
+    /**
+     * After checking, parse it to best matching expression.
+     * public parse method promised args valid from check().
+     */
     protected abstract fun internalParse(argsList: List<String>, returnType: String): ParseResult
 
     internal fun publicParse(argsList: List<String>, returnType: String): ParseResult {

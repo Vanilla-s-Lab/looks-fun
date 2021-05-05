@@ -15,7 +15,7 @@ using Standard Functional Interface in [**Package java.util.function**](https://
 So I make this simple CLI tools to pick a better choice, just tell me the signature of functions.
 
 ## Installation
-```
+```shell
 npm install --global looks-fun
 ```
 
