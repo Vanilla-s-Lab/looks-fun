@@ -8,7 +8,7 @@ typealias ParseResult = Pair<String, List<String>>
 private const val USAGE =
     """lkf - Looking for Standard Java Functional Interface. 
 Example: "lkf int $SEPARATOR long", "lkf long double $SEPARATOR String". 
-No Args or Return value: "() $SEPARATOR String", "Object $SEPARATOR void". """
+No Args or Return value: "[] $SEPARATOR String", "Object $SEPARATOR void". """
 
 // https://nodejs.org/api/process.html#process_exit_codes
 internal const val INVALID_ARGUMENT = 9
@@ -17,7 +17,7 @@ private const val DEBUG = false // Debug flag to hook args.
 fun main() {
     val argv = process.argv
     var args = argv.slice(2 until argv.size)
-    if (DEBUG) args = listOf("Object", "int", "-", "void")
+    if (DEBUG) args = listOf("[]", "-", "double")
 
     if (!ArgsParser.isValid(args)) {
         console.log(USAGE.trimIndent())
