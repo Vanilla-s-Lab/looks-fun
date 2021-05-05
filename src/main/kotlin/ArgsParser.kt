@@ -11,9 +11,9 @@ import parser.predicate.PredicateParser
 
 object ArgsParser {
     // TODO: 2021/4/26 Does Kotlin / Node.js has constant of them...?
-    const val SEPARATOR = "-"
-    const val WHITE_SPACE = ' '.toString()
-    const val NO_ARGS = "()"
+    internal const val SEPARATOR = "-"
+    private const val WHITE_SPACE = ' '.toString()
+    internal const val NO_ARGS = "()"
 
     private val allFIParser = listOf(
         UnaryOperatorParser, BinaryOperatorParser,
@@ -30,7 +30,7 @@ object ArgsParser {
      * @param args The input args, each arg should not blank or contains WHITE_SPACE.
      * @return true if meet our requirement.
      */
-    fun isValid(args: List<String>): Boolean {
+    internal fun isValid(args: List<String>): Boolean {
         assert(args.all { !it.contains(WHITE_SPACE) }, AssertionError())
         assert(args.all { it.isNotBlank() }, AssertionError())
 
@@ -47,13 +47,13 @@ object ArgsParser {
         return true
     }
 
-    fun parseArgs(rawArgs: RawArgs): ParseResult {
+    internal fun parseArgs(rawArgs: RawArgs): ParseResult {
         var (argsList, returnType) = rawArgs
         if (argsList[0] == NO_ARGS) argsList = emptyList()
 
         allFIParser.forEach {
             if (it.check(argsList, returnType))
-                return it.parse(argsList, returnType)
+                return it.publicParse(argsList, returnType)
         }
 
         console.log("No standard functional interface matching. ")

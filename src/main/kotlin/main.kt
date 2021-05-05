@@ -11,13 +11,13 @@ Example: "lkf int $SEPARATOR long", "lkf long double $SEPARATOR String".
 No Args or Return value: "() $SEPARATOR String", "Object $SEPARATOR void". """
 
 // https://nodejs.org/api/process.html#process_exit_codes
-const val INVALID_ARGUMENT = 9
-const val DEBUG = false // Debug flag to hook args.
+internal const val INVALID_ARGUMENT = 9
+private const val DEBUG = false // Debug flag to hook args.
 
 fun main() {
     val argv = process.argv
     var args = argv.slice(2 until argv.size)
-    if (DEBUG) args = listOf("int", SEPARATOR, "int")
+    if (DEBUG) args = listOf("Object", "int", "-", "void")
 
     if (!ArgsParser.isValid(args)) {
         console.log(USAGE.trimIndent())
@@ -25,7 +25,7 @@ fun main() {
     }
 
     val parseResult = ArgsParser.parseArgs(args.toRaw())
-    console.log(parseResult.string())
+    console.log("Parse result: ${parseResult.string()}")
 }
 
 /**

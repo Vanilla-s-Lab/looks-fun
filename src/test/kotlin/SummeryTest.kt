@@ -1,6 +1,5 @@
 import ArgsParser.NO_ARGS
 import ArgsParser.SEPARATOR
-import parser.FIParser.Companion.VOID
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
@@ -30,7 +29,7 @@ class SummeryTest {
         private const val O = "Object"
         private const val B = "Boolean"
         private const val N = NO_ARGS
-        private const val V = VOID
+        private const val V = "void"
 
         private const val T1 = "Type1"
         private const val T2 = "Type2"
