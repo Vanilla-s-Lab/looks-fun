@@ -10,7 +10,7 @@ import ParseResult
 abstract class FIParser {
     internal companion object {
         private fun Any.lowerClassName() = this::class.simpleName!!
-            .removeSuffix("CompanionObject").toLowerCase()
+                .removeSuffix("CompanionObject").lowercase()
 
         protected val fiStdTypeList = listOf(Int, Double)
             .map { it.lowerClassName() }
@@ -23,7 +23,7 @@ abstract class FIParser {
 
         protected const val VOID = "void"
         private const val COMMON_SUFFIX = "Parser"
-        protected val BOOLEAN = Boolean::class.simpleName!!.toLowerCase()
+        protected val BOOLEAN = Boolean::class.simpleName!!.lowercase()
     }
 
     /**

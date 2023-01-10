@@ -39,10 +39,10 @@ internal class SummeryTest {
         private const val OBJ = "Obj"
     }
 
-    private val i = I.toLowerCase()
-    private val l = L.toLowerCase()
-    private val d = D.toLowerCase()
-    private val b = B.toLowerCase()
+    private val i = I.lowercase()
+    private val l = L.lowercase()
+    private val d = D.lowercase()
+    private val b = B.lowercase()
 
     @Test
     internal fun testOperator() {
