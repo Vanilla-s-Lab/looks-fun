@@ -65,3 +65,8 @@ npmPublishing {
         people = listOf(People(myName, myEmail, myGithub)).toMutableList()
     }
 }
+
+// https://kotlinlang.org/docs/js-project-setup.html#use-pre-installed-node-js
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().download = false
+}
