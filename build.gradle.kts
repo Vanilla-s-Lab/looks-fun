@@ -2,10 +2,13 @@ import io.github.gciatto.kt.node.Bugs
 import io.github.gciatto.kt.node.People
 
 plugins {
-    kotlin("js") version "1.4.32"
+    kotlin("js") version "1.8.0"
 
     // https://github.com/gciatto/kt-npm-publish
-    id("io.github.gciatto.kt-npm-publish") version "0.3.6"
+    id("io.github.gciatto.kt-npm-publish") version "0.3.9"
+
+    // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.github.ben-manes.versions") version "0.44.0"
 }
 
 group = "org.hydev"
