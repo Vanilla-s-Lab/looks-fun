@@ -1,4 +1,4 @@
-import assert.assert
+import node.process.process
 import parser.SupplierParser
 import parser.consumer.BiConsumerParser
 import parser.consumer.ConsumerParser
@@ -31,8 +31,8 @@ internal object ArgsParser {
      * @return true if meet our requirement.
      */
     internal fun isValid(args: List<String>): Boolean {
-        assert(args.all { !it.contains(WHITE_SPACE) }, AssertionError())
-        assert(args.all { it.isNotBlank() }, AssertionError())
+        require(args.all { !it.contains(WHITE_SPACE) }) { AssertionError() }
+        require(args.all { it.isNotBlank() }) { AssertionError() }
 
         val argsSize = args.size
 

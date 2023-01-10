@@ -1,6 +1,5 @@
 import ArgsParser.SEPARATOR
-import assert.assert
-import assert.assert.AssertionError
+import node.process.process
 
 typealias RawArgs = Pair<List<String>, String>
 typealias ParseResult = Pair<String, List<String>>
@@ -48,7 +47,7 @@ internal fun List<String>.toRaw(): RawArgs {
  */
 internal fun ParseResult.string(): String {
     val (name, args) = this // Function name cannot be blank, but args can.
-    assert(name.isNotBlank(), AssertionError())
+    require(name.isNotBlank()) { AssertionError() }
 
     // Some of Functional Interfaces does not have any generic args.
     // @see https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html

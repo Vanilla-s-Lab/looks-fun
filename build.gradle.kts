@@ -8,7 +8,7 @@ plugins {
     id("io.github.gciatto.kt-npm-publish") version "0.3.9"
 }
 
-group = "org.hydev"
+group = "me.vergedx"
 version = "1.0.0" // https://semver.org/lang/zh-CN/
 
 repositories {
@@ -17,7 +17,9 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test-js"))
-    implementation("org.jetbrains.kotlinx:kotlinx-nodejs:0.0.7")
+
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlin-wrappers/kotlin-node
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-node:18.11.18-pre.472")
 }
 
 kotlin {
@@ -38,7 +40,7 @@ kotlin {
 }
 
 val github = "https://github.com/Vanilla-s-Lab/looks-fun"
-val (myName, myEmail) = "Vanilla" to "neko@hydev.org"
+val (myName, myEmail) = "Vanilla" to "osu_Vanilla@126.com"
 val myGithub = "https://github.com/VergeDX"
 npmPublishing {
     val npmToken = properties["npmToken"] ?: ""
