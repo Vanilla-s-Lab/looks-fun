@@ -57,6 +57,6 @@ internal object ArgsParser {
         }
 
         console.log("No standard functional interface matching. ")
-        process.exit(INVALID_ARGUMENT); throw AssertionError()
+        process.exit(INVALID_ARGUMENT) // ; throw AssertionError()
     }
 }
