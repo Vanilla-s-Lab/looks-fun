@@ -47,7 +47,7 @@ internal fun List<String>.toRaw(): RawArgs {
  */
 internal fun ParseResult.string(): String {
     val (name, args) = this // Function name cannot be blank, but args can.
-    require(name.isNotBlank()) { AssertionError() }
+    require(name.isNotBlank())
 
     // Some of Functional Interfaces does not have any generic args.
     // @see https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html

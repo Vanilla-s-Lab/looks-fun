@@ -31,8 +31,8 @@ internal object ArgsParser {
      * @return true if meet our requirement.
      */
     internal fun isValid(args: List<String>): Boolean {
-        require(args.all { !it.contains(WHITE_SPACE) }) { AssertionError() }
-        require(args.all { it.isNotBlank() }) { AssertionError() }
+        require(args.all { !it.contains(WHITE_SPACE) })
+        require(args.all { it.isNotBlank() })
 
         val argsSize = args.size
 

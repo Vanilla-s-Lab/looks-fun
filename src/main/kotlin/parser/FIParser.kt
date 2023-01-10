@@ -44,7 +44,7 @@ abstract class FIParser {
     protected abstract fun internalParse(argsList: List<String>, returnType: String): ParseResult
 
     internal fun publicParse(argsList: List<String>, returnType: String): ParseResult {
-        require(check(argsList, returnType)) { AssertionError() }
+        require(check(argsList, returnType))
         return internalParse(argsList, returnType)
     }
 
@@ -55,7 +55,7 @@ abstract class FIParser {
      * @return wrapped class name if it is basic type, otherwise return to itself.
      */
     protected fun String.filterStdType(): String {
-        require(this.isNotEmpty() && this.isNotEmpty()) { AssertionError() }
+        require(this.isNotEmpty() && this.isNotEmpty())
 
         if (this in stdTypeList) {
             if (this == Int.lowerClassName()) return "Integer"
