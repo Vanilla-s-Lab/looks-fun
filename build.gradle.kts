@@ -6,9 +6,6 @@ plugins {
 
     // https://github.com/gciatto/kt-npm-publish
     id("io.github.gciatto.kt-npm-publish") version "0.3.9"
-
-    // https://github.com/ben-manes/gradle-versions-plugin
-    id("com.github.ben-manes.versions") version "0.44.0"
 }
 
 group = "org.hydev"
