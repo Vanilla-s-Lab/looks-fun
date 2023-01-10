@@ -19,8 +19,8 @@ internal class ArgsParserTest {
     @Test
     internal fun testArgsValid() {
         // Actually, it fails with AssertionError, but seems it only can get Error.
-        assertFailsWith<AssertionError> { isValid(listOf(WS, SEPARATOR, WS)) }
-        assertFailsWith<AssertionError> { isValid(listOf("", SEPARATOR, "")) }
+        assertFailsWith<IllegalArgumentException> { isValid(listOf(WS, SEPARATOR, WS)) }
+        assertFailsWith<IllegalArgumentException> { isValid(listOf("", SEPARATOR, "")) }
 
         assertFalse { isValid(listOf()) }
         assertFalse { isValid(listOf(TA, TB)) }
