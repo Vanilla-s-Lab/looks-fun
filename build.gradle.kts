@@ -15,7 +15,6 @@ group = "org.hydev"
 version = "1.0.0" // https://semver.org/lang/zh-CN/
 
 repositories {
-    jcenter()
     mavenCentral()
 }
 
