@@ -2,7 +2,8 @@ import io.github.gciatto.kt.node.Bugs
 import io.github.gciatto.kt.node.People
 
 plugins {
-    kotlin("js") version "1.9.0"
+    // https://kotlinlang.org/docs/multiplatform/multiplatform-compatibility-guide.html
+    kotlin("multiplatform") version "1.9.0"
 
     // https://github.com/gciatto/kt-npm-publish
     id("io.github.gciatto.kt-npm-publish") version "0.3.9"
@@ -15,15 +16,9 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test-js"))
-
-    // https://mvnrepository.com/artifact/org.jetbrains.kotlin-wrappers/kotlin-node
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-node:18.11.18-pre.472")
-}
-
 kotlin {
-    js(IR) { // https://discuss.kotlinlang.org/t/kotlin-js-1-4-how-to-output-a-npm-package/19128
+    js(IR) {
+        // https://discuss.kotlinlang.org/t/kotlin-js-1-4-how-to-output-a-npm-package/19128
         binaries.executable()
 
         // https://www.kotlincn.net/docs/reference/js-modules.html
@@ -37,6 +32,19 @@ kotlin {
             }
         }
     }
+
+    sourceSets {
+        val jsMain by getting {
+            dependencies {
+                // https://mvnrepository.com/artifact/org.jetbrains.kotlin-wrappers/kotlin-node
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-node:18.11.18-pre.472")
+            }
+        }
+    }
+}
+
+dependencies {
+    add("jsTestImplementation", kotlin("test"))
 }
 
 val github = "https://github.com/Vanilla-s-Lab/looks-fun"
