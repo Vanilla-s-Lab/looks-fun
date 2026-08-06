@@ -2,7 +2,7 @@ import io.github.gciatto.kt.node.Bugs
 import io.github.gciatto.kt.node.People
 
 plugins {
-    kotlin("js") version "1.8.0"
+    kotlin("js") version "1.9.0"
 
     // https://github.com/gciatto/kt-npm-publish
     id("io.github.gciatto.kt-npm-publish") version "0.3.9"
