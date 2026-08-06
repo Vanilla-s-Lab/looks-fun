@@ -3,7 +3,7 @@ import io.github.gciatto.kt.node.People
 
 plugins {
     // https://kotlinlang.org/docs/multiplatform/multiplatform-compatibility-guide.html
-    kotlin("multiplatform") version "1.9.0"
+    kotlin("multiplatform") version "2.4.10"
 
     // https://github.com/gciatto/kt-npm-publish
     id("io.github.gciatto.kt-npm-publish") version "0.3.9"
@@ -75,6 +75,11 @@ npmPublishing {
 }
 
 // https://kotlinlang.org/docs/js-project-setup.html#use-pre-installed-node-js
-rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
-    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().download = false
+project.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsPlugin> {
+    project.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsEnvSpec>().download = false
+}
+
+// https://kotlinlang.org/docs/js-project-setup.html#use-pre-installed-yarn
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootEnvSpec>().download = false
 }
